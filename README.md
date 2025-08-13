@@ -125,6 +125,9 @@ The backend of this project includes unit tests. To run the tests, navigate to t
 pytest
 ```
 
+# wechat
+![weichat.png](doc%2Fweichat.png)
+
 # License
 
 This project is open-source under the [MIT License](LICENSE).
