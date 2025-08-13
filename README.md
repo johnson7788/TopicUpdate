@@ -1,130 +1,130 @@
-# MedBrief: 简报专家，您的自动化医学文献追踪与分析助手
+# MedBrief: Briefing Expert, Your Automated Medical Literature Tracking and Analysis Assistant
 
-MedBrief 是一个全栈Web应用，旨在帮助医学研究者、临床医生和学生自动追踪特定医学主题的最新文献，进行数据可视化分析，并一键生成精美的 PowerPoint (PPT) 简报。
+MedBrief is a full-stack web application designed to help medical researchers, clinicians, and students automatically track the latest literature on specific medical topics, perform data visualization analysis, and generate beautiful PowerPoint (PPT) briefings with one click.
 
-# 注意：
-本项目只是一个模拟数据的项目，后端的数据依赖[insert_my_data.py](backend%2Finsert_my_data.py)进行模拟插入。
+# Note:
+This project is only a simulated data project. The backend data relies on [insert_my_data.py](backend%2Finsert_my_data.py) for simulated insertion.
 
-# 需求分析
+# Requirements Analysis
 
-在快节奏的医学领域，从业者需要持续关注其专业方向的最新研究进展。传统的人工检索、阅读、整理和汇报方式效率低下且耗时巨大。本项目旨在解决以下痛点：
+In the fast-paced medical field, practitioners need to continuously follow the latest research advances in their professional directions. Traditional manual search, reading, organization, and reporting methods are inefficient and time-consuming. This project aims to solve the following pain points:
 
-- **信息过载**: 难以从海量文献中快速筛选出最相关、最有价值的内容。
-- **效率低下**: 手动整理文献、分析趋势和制作报告PPT是一项重复性高、耗时长的劳动。
-- **缺乏洞察**: 难以直观地发现研究趋势、核心期刊、活跃研究机构等深层信息。
+- **Information Overload**: Difficulty in quickly filtering out the most relevant and valuable content from massive literature.
+- **Low Efficiency**: Manually organizing literature, analyzing trends, and creating report PPTs is highly repetitive and time-consuming work.
+- **Lack of Insights**: Difficulty in intuitively discovering in-depth information such as research trends, core journals, and active research institutions.
 
-# 核心功能
+# Core Features
 
-- **智能化主题管理**: 轻松创建和管理您感兴趣的医学主题，设定关键词和监控周期。
-- **自动化数据分析**:
-    - **趋势分析**: 自动分析特定主题文献随时间（如按季度、年度）的发表数量趋势。
-    - **多维度分布**: 可视化展示文献在期刊、作者、国家/地区及研究机构等维度的分布情况。
-- **一键生成PPT报告**: 根据最新的分析数据，自动生成结构清晰、图文并茂的PowerPoint报告，可直接用于学术汇报或内部交流。
-- **友好的Web界面**: 提供直观的前端界面，方便用户进行主题设置、数据查看和报告下载。
+- **Intelligent Topic Management**: Easily create and manage medical topics of interest, set keywords and monitoring cycles.
+- **Automated Data Analysis**:
+    - **Trend Analysis**: Automatically analyze the trend of publications on specific topics over time (e.g., by quarter, year).
+    - **Multi-dimensional Distribution**: Visually display the distribution of literature across dimensions such as journals, authors, countries/regions, and research institutions.
+- **One-click PPT Report Generation**: Automatically generate structured, illustrated PowerPoint reports based on the latest analysis data, which can be directly used for academic presentations or internal communication.
+- **User-friendly Web Interface**: Provide an intuitive frontend interface for users to easily perform topic settings, data viewing, and report downloads.
 
-# 技术栈
+# Technology Stack
 
-本项目采用前后端分离的现代Web架构。
+This project adopts a modern web architecture with separated frontend and backend.
 
-- **后端 (Backend)**
-    - **语言**: Python 3
-    - **框架**: FastAPI
-    - **数据库**: SQLite + SQLAlchemy ORM
-    - **PPT生成**: `python-pptx`
-    - **数据处理**: `pandas`, `scikit-learn`
-    - **部署**: Docker, Uvicorn
+- **Backend**
+    - **Language**: Python 3
+    - **Framework**: FastAPI
+    - **Database**: SQLite + SQLAlchemy ORM
+    - **PPT Generation**: `python-pptx`
+    - **Data Processing**: `pandas`, `scikit-learn`
+    - **Deployment**: Docker, Uvicorn
 
-- **前端 (Frontend)**
-    - **语言**: TypeScript
-    - **框架**: React 18
-    - **构建工具**: Vite
-    - **UI/样式**: Tailwind CSS
-    - **图表**: Recharts
-    - **部署**: Docker, Nginx
+- **Frontend**
+    - **Language**: TypeScript
+    - **Framework**: React 18
+    - **Build Tool**: Vite
+    - **UI/Style**: Tailwind CSS
+    - **Charts**: Recharts
+    - **Deployment**: Docker, Nginx
 
-# 如何运行
+# How to Run
 
-我们强烈推荐使用 Docker 来运行本项目，因为它能为您处理好所有环境依赖和配置。
+We strongly recommend using Docker to run this project, as it handles all environment dependencies and configurations for you.
 
-### 1. 使用 Docker (推荐)
+### 1. Using Docker (Recommended)
 
-**前提**: 请确保您的电脑上已经安装了 [Docker](https://www.docker.com/products/docker-desktop/) 和 Docker Compose。
+**Prerequisites**: Please ensure that [Docker](https://www.docker.com/products/docker-desktop/) and Docker Compose are installed on your computer.
 
-**步骤**:
+**Steps**:
 
-1.  克隆本仓库到您的本地：
+1. Clone this repository to your local machine:
     ```bash
     git clone https://github.com/johnson7788/TopicUpdate
     cd TopicUpdate
     ```
 
-2.  在项目根目录下，执行以下命令来构建并启动所有服务：
+2. In the project root directory, execute the following command to build and start all services:
     ```bash
     docker-compose up --build
     ```
-    该命令会自动构建前端和后端的 Docker 镜像，并启动两个容器。
+    This command will automatically build the Docker images for the frontend and backend and start two containers.
 
-3.  **访问应用**:
-    - **前端界面**: 打开浏览器访问 `http://localhost:9000`
-    - **后端 API**: 后端服务运行在 `http://localhost:8000`
+3. **Access the Application**:
+    - **Frontend Interface**: Open your browser and visit `http://localhost:9000`
+    - **Backend API**: The backend service is running at `http://localhost:8000`
 
-### 2. 本地手动运行 (适合开发者)
+### 2. Running Locally (for Developers)
 
-如果您希望在本地分别运行前端和后端服务进行开发。
+If you want to run the frontend and backend services separately on your local machine for development.
 
-#### 启动后端
+#### Start Backend
 
 ```bash
-# 1. 进入后端目录
+# 1. Navigate to the backend directory
 cd backend/
 
-# 2. 安装Python依赖
+# 2. Install Python dependencies
 pip install -r requirements.txt
 
-# 3. 初始化数据库并填充示例数据
+# 3. Initialize the database and populate sample data
 python insert_my_data.py
 
-# 4. 启动FastAPI服务
+# 4. Start the FastAPI service
 python main.py
-# 服务将运行在 http://localhost:8000
+# The service will be running at http://localhost:8000
 ```
 
-#### 启动前端
+#### Start Frontend
 
 ```bash
-# 1. 进入前端目录
+# 1. Navigate to the frontend directory
 cd frontend/
 
-# 2. 安装npm依赖
+# 2. Install npm dependencies
 npm install
 
-# 3. 启动Vite开发服务器
+# 3. Start the Vite development server
 npm run dev
-# 服务将运行在 http://localhost:5173 (或终端提示的其他端口)
+# The service will be running at http://localhost:5173 (or another port indicated in the terminal)
 ```
-**注意**: 在手动运行前端时，请确保 `frontend/.env` 文件中的 `VITE_API_BASE_URL` 指向您的后端地址 (例如 `http://localhost:8000`)。
+**Note**: When running the frontend locally, ensure that `frontend/.env` file's `VITE_API_BASE_URL` points to your backend address (e.g., `http://localhost:8000`).
 
-# API 文档
+# API Documentation
 
-后端服务基于 FastAPI，自带强大的自动化API文档。在后端服务启动后，您可以访问以下地址进行查看和交互：
+The backend service is based on FastAPI and comes with powerful automated API documentation. After starting the backend service, you can access the following addresses to view and interact with it:
 
 - **Swagger UI**: `http://localhost:8000/docs`
 - **ReDoc**: `http://localhost:8000/redoc`
 
-# 截图
+# Screenshots
 ![document_monitor.png](doc%2Fdocument_monitor.png)
 ![help.png](doc%2Fhelp.png)
 ![history.png](doc%2Fhistory.png)
 ![topic_setting.png](doc%2Ftopic_setting.png)
 
-# 运行测试
+# Running Tests
 
-本项目后端包含单元测试。要运行测试，请进入 `backend/` 目录并执行：
+The backend of this project includes unit tests. To run the tests, navigate to the `backend/` directory and execute:
 
 ```bash
 pytest
 ```
 
-# 许可证
+# License
 
-本项目基于 [MIT License](LICENSE) 开源。
+This project is open-source under the [MIT License](LICENSE).
