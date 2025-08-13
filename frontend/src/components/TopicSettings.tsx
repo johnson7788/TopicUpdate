@@ -24,7 +24,7 @@ interface Topic {
   keywords: string[];
   created_at: string;
   last_updated: string;
-  frequency: 'daily' | 'weekly' | 'monthly' | 'realtime';
+  frequency: 'weekly' | 'monthly' | 'quarter';
   custom_date_range: string;
   detection_time: string;
   notification_channels: string[];
@@ -218,10 +218,9 @@ const TopicSettings = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">检测频率</label>
                   <select name="frequency" value={selectedTopic.frequency} onChange={handleInputChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg">
-                    <option value="daily">每日</option>
                     <option value="weekly">每周</option>
                     <option value="monthly">每月</option>
-                    <option value="realtime">实时</option>
+                    <option value="quarter">季度</option>
                   </select>
                 </div>
                 <div>
@@ -231,7 +230,7 @@ const TopicSettings = () => {
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">通知方式</label>
                   <div className="flex space-x-4">
-                    {['email', 'wechat', 'sms'].map(channel => (
+                    {['email', 'wechat', 'sms', 'app'].map(channel => (
                       <label key={channel} className="flex items-center space-x-2">
                         <input type="checkbox" checked={selectedTopic.notification_channels?.includes(channel)} onChange={() => handleArrayChange('notification_channels', channel)} />
                         <span>{channel.charAt(0).toUpperCase() + channel.slice(1)}</span>

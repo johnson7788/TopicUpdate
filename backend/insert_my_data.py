@@ -447,7 +447,7 @@ def insert_test_data(db: Session):
     # 4. Create PPT Push Records for successful updates
     logger.info("Inserting PPT push records...")
     recipients_pool = [
-        json.dumps(["oncology_dept_head@medbrief.com", "research_lead@medbrief.com"]),
+        json.dumps(["oncology_dept_head@medbrief.com"]),
         json.dumps(["medical_affairs@pharma.com"]),
         json.dumps(["clinical_trials_group@medbrief.com"]),
     ]

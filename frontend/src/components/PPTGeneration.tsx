@@ -160,7 +160,10 @@ const PPTGeneration = () => {
                         <Eye className="h-4 w-4" /><span>查看</span>
                       </button>
                       <a href={`${API_URL}/PPT/${record.ppt_filename}`} download={record.ppt_filename} className="text-blue-600 hover:text-blue-800 flex items-center space-x-1">
-                        <Download className="h-4 w-4" /><span>下载</span>
+                        <Download className="h-4 w-4" /><span>PPT下载</span>
+                      </a>
+                      <a href={`${API_URL}/PPT/${record.ppt_filename}`} download={record.ppt_filename} className="text-blue-600 hover:text-blue-800 flex items-center space-x-1">
+                        <Download className="h-4 w-4" /><span>文献下载</span>
                       </a>
                     </td>
                   </tr>
@@ -170,7 +173,7 @@ const PPTGeneration = () => {
                         <div className="flex items-center space-x-3 text-sm">
                           <GitCommitHorizontal className="h-5 w-5 text-blue-500" />
                           <p className="text-blue-800">
-                            <span className="font-semibold">版本差异:</span> {record.diff_summary}
+                            <span className="font-semibold">版本环比差异:</span> {record.diff_summary}
                           </p>
                         </div>
                       </td>

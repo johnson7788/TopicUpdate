@@ -39,6 +39,19 @@ const LiteratureAnalysis = () => {
   const [analysisData, setAnalysisData] = useState<LiteratureAnalysisData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
+
+  const toggleSummary = (id: number) => {
+    setExpandedIds(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
 
   // Fetch all topics for the dropdown
   useEffect(() => {
@@ -154,18 +167,20 @@ const LiteratureAnalysis = () => {
             </div>
             <div className="divide-y divide-gray-200">
               {analysisData.literature.map((paper) => (
-                <div key={paper.id} className="p-6 hover:bg-gray-50">
+                <div key={paper.id} className="p-6 hover:bg-gray-50 cursor-pointer" onClick={() => toggleSummary(paper.id)}>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h4 className="text-lg font-medium text-gray-900 mb-2">{paper.title}</h4>
                       <p className="text-sm text-gray-600 mb-2">{paper.authors.join(', ')}</p>
-                                            <div className="my-3 p-3 bg-gray-50 border rounded-md">
-                        <div className="flex items-center text-sm font-semibold text-gray-800 mb-2">
-                          <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
-                          <span>摘要</span>
+                      {expandedIds.has(paper.id) && (
+                        <div className="my-3 p-3 bg-gray-50 border rounded-md">
+                          <div className="flex items-center text-sm font-semibold text-gray-800 mb-2">
+                            <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
+                            <span>中英文介绍</span>
+                          </div>
+                          <p className="text-sm text-gray-700 pl-6">{paper.summary}</p>
                         </div>
-                        <p className="text-sm text-gray-700 pl-6">{paper.summary}</p>
-                      </div>
+                      )}
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <span><strong>{paper.journal_name}</strong> ({new Date(paper.publication_date).getFullYear()})</span>
                         <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
@@ -174,7 +189,7 @@ const LiteratureAnalysis = () => {
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 ml-4">
-                      <button className="p-2 hover:bg-gray-100 rounded-full" title="Download">
+                      <button className="p-2 hover:bg-gray-100 rounded-full" title="Download" onClick={(e) => e.stopPropagation()}>
                         <Download className="h-4 w-4 text-gray-600" />
                       </button>
                     </div>
